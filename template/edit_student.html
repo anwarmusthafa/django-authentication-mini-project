@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %} AddStudent{% endblock title %}
+{% block content %}
+<style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .signup-form {
+      max-width: 400px;
+      margin: 100px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+<div class="container">
+    <div class="signup-form">
+      <h2 class="text-center">Edit Student Details</h2>
+      <form action="{% url 'edit_student' pk=pk %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" placeholder=""  name="name" value= "{{ instance_to_be_edit.name }}" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="" name="email" value={{ instance_to_be_edit.email }} required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="text" class="form-control" id="phone" placeholder="" name="phone" value={{ instance_to_be_edit.phone }} required>
+      </div>
+        <div class="form-group">
+          <label for="password1">Password</label>
+          <input type="password" class="form-control" id="password1" placeholder="" name="password" value={{ instance_to_be_edit.password }} required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+      </form>
+      {% if student_add %}
+      <p class="text-success text-center"></p>
+        {% endif %}
+      <p class="text-center mt-3"><a href="{% url "admin_home" %}">Back to home </a></p>
+    </div>
+  </div>
+
+{% endblock content %}

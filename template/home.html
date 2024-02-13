@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .jumbotron {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .logout-btn {
+            margin-top: 20px;
+        }
+    </style>
+    <title>Student Home Page</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="jumbotron text-center">
+        <h1>Welcome to Student Portal</h1>
+        <p>Explore and learn!</p>
+    </div>
+
+    <!-- Content specific to the student home page goes here -->
+
+    <div class="text-center logout-btn">
+        <a href="{% url "logout" %} " class="btn btn-danger btn-lg">Logout</a>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

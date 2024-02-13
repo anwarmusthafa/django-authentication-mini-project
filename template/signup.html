@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <title>Signup Page</title>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .signup-form {
+      max-width: 400px;
+      margin: 100px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="signup-form">
+    <h2 class="text-center">Sign Up</h2>
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter your name" name="name"  required  autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter your email" name="email" required  autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" name="phone" required autocomplete="off">
+    </div>
+    
+      <div class="form-group">
+        <label for="password1">Password</label>
+        <input type="password" class="form-control" id="password1" placeholder="Enter your password" name="password1" required  autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label for="password2">Confirm Password</label>
+        <input type="password" class="form-control" id="password2" placeholder="Confirm your password" name="password2" required  autocomplete="off">
+      </div>
+  {% if name_error %} <p class="text-danger text-center">{{ name_error }} </p>{% endif %}
+  {% if email_error %} <p class="text-danger text-center">{{ email_error }} </p>{% endif %}
+  {% if phone_error %} <p class="text-danger text-center">{{ phone_error }} </p>{% endif %}
+  {% if password_error %} <p class="text-danger text-center">{{ password_error }} </p>{% endif %}
+      <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+    </form>
+    {% if registration_successfull %}
+    <p class="text-center text-success">{{ registration_successfull }} </p>
+    <p class="text-center mt-3"><a href="{% url "login" %}">Click here to login</a></p>
+    {% else %}
+    <p class="text-center mt-3">If you have already an account, <a href="{% url "login" %}">Click here </a></p>
+    {% endif %}
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
